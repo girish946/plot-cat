@@ -4,11 +4,11 @@
 import pylab
 import sys
 import time
-
+import random
 
 class plotter:
 
-  def __init__(self, number_of_samples = 100, total_plots = 1):
+  def __init__(self, number_of_samples = 100, total_plots = 1,y_low_lim = 0, y_high_lim = 1024):
 
     self.fig = pylab.figure(1)
     self.currentAxis = pylab.arange(0, number_of_samples, 1)
@@ -17,7 +17,7 @@ class plotter:
     self.lines = []
     for i in range(total_plots):
       new_plot = self.fig.add_subplot(111)
-      new_line = new_plot.plot(self.currentAxis, self.currentAxis)
+      new_line = new_plot.plot(self.currentAxis, [random.randint(y_low_lim, y_high_lim)for i in range(0,100)])
       self.plots.append(new_plot)
       self.lines.append(new_line)
 
