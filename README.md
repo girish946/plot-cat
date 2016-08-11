@@ -29,10 +29,10 @@ ser = serial.Serial('/dev/ttyAMA0', 9600)
 
 #the callback function for plotting
 @p.plot_self
-def update_plot(plot):
+def update_plot():
 
   data = [ser.readline() for i in range(100)]
-  plot.lines[0][0].set_data(plot.currentAxis, data)
+  p.lines[0][0].set_data(p.currentAxis, data)
 
 p.set_call_back(setval)
 
