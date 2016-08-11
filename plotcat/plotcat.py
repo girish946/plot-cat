@@ -19,9 +19,11 @@ class plotter:
 
     self.plots = []
     self.lines = []
+
     for i in range(total_plots):
+
       new_plot = self.fig.add_subplot(111)
-      new_line = new_plot.plot(self.currentAxis, [random.randint(y_low_lim, y_high_lim)for i in range(0,100)])
+      new_line = new_plot.plot(self.currentAxis, [random.randint(y_low_lim, y_high_lim)for i in range(0, number_of_samples)])
       self.plots.append(new_plot)
       self.lines.append(new_line)
 
@@ -35,6 +37,7 @@ class plotter:
     in the callback function implement the logic of reading of serial input
     also the further processing of the signal if necessary has to be done in this
     callbak function."""
+
     self.timer.add_callback(func)
     self.timer.start()
     pylab.show()
@@ -45,14 +48,22 @@ class plotter:
     """define your callback function with the decorator @plotter.plot_self.
     in the callback function set the data of lines 
     in the plot using self.lines[i][j].set_data(your data)"""
+
     def func_wrapper():
+
       func(self)
+
       try:
+
         self.manager.canvas.draw()
+
       except ValueError:
         pass
+
       except RuntimeError as RtE:
         pass
+
       except:
         pass
+
     return func_wrapper

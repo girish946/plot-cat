@@ -6,7 +6,7 @@ plot-cat is the python library for plotting live serial input.
 
 To plot the incomming input from serial device directly.
 
-Assuming there is one value on one line in the serial input, ie. roughly the format of the serial input is roughly like:
+Assuming there is one value on one line in the serial input, ie. the format of the serial input is roughly like:
 
     val | \r | \n 
     -----|----|----
@@ -32,7 +32,7 @@ ser = serial.Serial('/dev/ttyAMA0', 9600)
 def update_plot(plot):
 
   data = [ser.readline() for i in range(100)]
-  plot.lines[0][0].set_data(self.currentAxis, data)
+  plot.lines[0][0].set_data(plot.currentAxis, data)
 
 p.set_call_back(setval)
 
