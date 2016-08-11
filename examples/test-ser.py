@@ -10,9 +10,9 @@ p = plotter()
 data = []
 
 @p.plot_self
-def setval(self):
+def setval():
   data = [ser.readline() for i in range(100)]
-  self.lines[0][0].set_data(self.currentAxis, data)
+  p.lines[0][0].set_data(p.currentAxis, data)
 
 p.set_call_back(setval)
 

@@ -20,6 +20,7 @@ def read_from_serial():
 
       temp = ser.readline()
       data.append(temp)
+      data.pop(0)
       time.sleep(0.0001)
 
     except AttributeError as Ae:
@@ -30,9 +31,9 @@ def read_from_serial():
 
 
 @p.plot_self
-def setval(plot):
+def setval():
 
-  plot.lines[0][0].set_data(plot.currentAxis, data[-1000:])
+  p.lines[0][0].set_data(p.currentAxis, data)
 
 if __name__ == '__main__':
 
