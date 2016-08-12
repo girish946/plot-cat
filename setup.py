@@ -12,7 +12,7 @@ setup(
     description = ("""tool to plot live serial input""") ,
     packages = ['plotcat'], 
     install_requires = ['matplotlib', 'pyserial'], 
-    keywords = 'serial input plotting matplotlib' ,
+    keywords = 'serial input plotting realtime data matplotlib Raspberry_pi ' ,
     scripts = ['live_plot.py'], 
     long_description = """tool to plot live serial input""",
     
