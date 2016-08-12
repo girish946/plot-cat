@@ -4,7 +4,13 @@
 from plotcat import *
 import sys
 import serial
-import thread
+
+if sys.version_info[0] < 3:
+  import thread
+
+else: 
+  import _thread as thread
+
 import time
 
 ser = serial.Serial(sys.argv[1], sys.argv[2])
@@ -20,7 +26,7 @@ def read_from_serial():
 
     try:
 
-      temp = ser.readline().split('\r')[0]
+      temp = ser.readline()
       try:
         
         [data[i].append(int(temp) / (i+1)) for i in range(4)]
@@ -34,6 +40,9 @@ def read_from_serial():
       pass
 
     except TypeError:
+      pass
+
+    except:
       pass
 
     
