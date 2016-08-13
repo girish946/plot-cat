@@ -1,5 +1,21 @@
 # plot-cat
-plot-cat is the python library for plotting live serial input.
+
+plot-cat is the python library for plotting live serial input. plotcat works on python 2.7 and later. plotcat comes handy when you want to plot live data that is coming form different sensors over the serial port. For example you have to plot the output of a temperature sensor that is coming from an [arduino](https://www.arduino.cc/) or any other microcontroller for that matter; plotcat comes handy for such tasks.
+
+plotcat sits on the top of [matplotlib](matplotlib.org) and does all the initialization and drawing stuff itself. you just have to provide the list of values to be plotted.
+
+plotcat works on linux osx and windows. plotcat also works well with [Raspberry Pi](https://www.raspberrypi.org/)
+
+## install plotcat
+
+```bash
+git clone https://github.com/girish946/plot-cat.git
+
+pip install -r requirements.txt
+
+python install setup.py install
+
+```
 
 
 ## useage
