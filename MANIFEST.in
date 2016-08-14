@@ -1,0 +1,2 @@
+include MANIFEST.in README.MD setup.py LICENSE live_plot.py requirements.txt
+recursive-include plotcat examples *.py
