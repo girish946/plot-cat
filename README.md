@@ -27,7 +27,7 @@ Assuming there is one value on one line in the serial input, ie. the format of t
     val | \r | \n 
     -----|----|----
 
-    python live_plot.py /dev/tty<device> baudrate
+    python live_plot.py -d /dev/tty<device> -b baudrate
 
 ### plot-cat api
 
