@@ -65,6 +65,6 @@ if __name__ == '__main__':
   #print (args.SerialDevice, args.Baudrate)
 
   ser = serial.Serial(args.SerialDevice, args.Baudrate)
-  thread.start_new_thread(read_from_serial, (ser))
+  thread.start_new_thread(read_from_serial, (ser,))
   p.set_call_back(setval)
 
