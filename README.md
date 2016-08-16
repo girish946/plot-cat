@@ -29,6 +29,9 @@ Assuming there is one value on one line in the serial input, ie. the format of t
 
     python live_plot.py -d /dev/tty<device> -b baudrate
 
+[detailed useage of live_plot.py](https://github.com/girish946/plot-cat/wiki/live_plot.py-useage)
+
+
 ### plot-cat api
 
 
