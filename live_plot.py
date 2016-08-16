@@ -15,11 +15,7 @@ else:
 import time
 
 
-p = plotter(number_of_samples = 1000)
-
-data = [0 for i in range(0,1000)]
-
-def read_from_serial(ser):
+def read_from_serial(ser, data):
 
   while True:
 
@@ -45,26 +41,53 @@ def read_from_serial(ser):
       pass	
 
 
-@p.plot_self
-def setval():
 
-  p.lines[0][0].set_data(p.currentAxis, data)
 
 if __name__ == '__main__':
 
   parser = argparse.ArgumentParser(description='tool for plotting live serial data')
-  parser.add_argument('-d', '--SerialDevice', type=str,
+  parser.add_argument('-d', '--SerialDevice', type=str, default='/dev/ttyUSB0',
                     help='serial device from which the input is coming.')
 
-  parser.add_argument('-b', '--Baudrate', type=int,
+  parser.add_argument('-b', '--Baudrate', type=int, default= 9600,
                     help='the baudrate of serial device.')
 
+  parser.add_argument('-n', '--Samples', type=int, default= 1000,
+                    help='number of samples to be plotted.')
+
+  parser.add_argument('-ymin', '--Yminimum', type=int, default= 0,
+                    help='lower limit of Y-Axis')
+
+  parser.add_argument('-ymax', '--Ymaximum', type=int, default= 1024,
+                    help='upper limit of Y-Axis')
+
+  parser.add_argument('-p', '--Plots', type=int, default= 1,
+                    help='total number of subplots to be created')
+
+  parser.add_argument('-r', '--Rows', type=int, default= 1,
+                    help='number of rows on the figure.')
+
+  parser.add_argument('-c', '--Cols', type=int, default= 1,
+                    help='number of columns on the figure.')
 
 
   args = parser.parse_args()
   #print (args.SerialDevice, args.Baudrate)
 
+  
+  data = [0 for i in range(0, args.Samples)]
+
+  p = plotter(number_of_samples = args.Samples, total_plots= args.Plots, 
+              rows = args.Rows, cols = args.Cols, 
+              y_low_lim = args.Yminimum, y_high_lim = args.Ymaximum)
+
+  @p.plot_self
+  def setval():
+    for i in p.lines:
+      i[0].set_data(p.currentAxis, data)
+
+
   ser = serial.Serial(args.SerialDevice, args.Baudrate)
-  thread.start_new_thread(read_from_serial, (ser,))
+  thread.start_new_thread(read_from_serial, (ser, data, ))
   p.set_call_back(setval)
 
