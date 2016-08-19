@@ -91,13 +91,20 @@ if __name__ == '__main__':
                         default=1,
                         help='number of columns on the figure.')
 
+    parser.add_argument('-t',
+                        '--Titles',
+                        nargs='+',
+                        type=str,
+                        default=['serial-graph'],
+                        help='titles for plots.')
+
     args = parser.parse_args()
 
     data = [0 for i in range(0, args.Samples)]
 
     p = plotter(number_of_samples=args.Samples, total_plots=args.Plots,
                 rows=args.Rows, cols=args.Cols, y_low_lim=args.Yminimum,
-                y_high_lim=args.Ymaximum)
+                y_high_lim=args.Ymaximum, names=args.Titles)
 
     @p.plot_self
     def setval():

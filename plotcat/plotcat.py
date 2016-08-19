@@ -11,7 +11,8 @@ class plotter:
     serial input."""
 
     def __init__(self, number_of_samples=100, total_plots=1, rows=1,
-                 cols=1, y_low_lim=0, y_high_lim=1024):
+                 cols=1, y_low_lim=0, y_high_lim=1024,
+                 names=['serial-graph']):
 
         """initializes the figure with the specified number of subplots
            (arg: total_plots)
@@ -33,14 +34,12 @@ class plotter:
                                                          y_high_lim)
                                           for i in
                                           range(0, number_of_samples)])
+                pylab.title(names[count-1])
                 self.plots.append(new_plot)
                 self.lines.append(new_line)
                 if count == total_plots:
                     break
                 count += 1
-
-
-
         self.manager = pylab.get_current_fig_manager()
         self.timer = self.fig.canvas.new_timer(interval=10)
 
