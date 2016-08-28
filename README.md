@@ -8,6 +8,11 @@ plotcat works on linux osx and windows. plotcat also works well with [Raspberry 
 
 ## install plotcat
 
+from pip ```bash pip install plotcat```
+
+or 
+
+
 ```bash
 git clone https://github.com/girish946/plot-cat.git
 
