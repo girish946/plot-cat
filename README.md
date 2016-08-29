@@ -22,6 +22,15 @@ python install setup.py install
 
 ```
 
+on fedora 22 and above
+
+```bash
+
+dnf copr enable girish946/plotcat 
+
+dnf install python-plotcat
+```
+
 
 ## useage
 
