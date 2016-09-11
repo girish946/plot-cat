@@ -1,5 +1,5 @@
 # Created by pyp2rpm-3.1.3
-%global pypi_name Plotcat
+%global pypi_name plotcat
 
 %if 0%{?fedora}
 %global with_python3 1
@@ -10,7 +10,7 @@
 Name:           python-%{pypi_name}
 Version:        1.0.0
 Release:        2%{?dist}
-Summary:        tool to plot live serial input
+Summary:        Tool to plot live serial input
 
 License:        GPLv3
 URL:            https://github.com/girish946/plot-cat
@@ -24,32 +24,32 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-devel
 
 %description
-tool to plot live serial input. plotcat works on python 2.7 and later.
+Tool to plot live serial input. plotcat works on python 2.7 and later.
 plotcat comes handy when you want to plot live data that is coming form
 different sensors over the serial port. For example you have to plot the output
-of a temperature sensor that is coming from an arduino or any other
-microcontroller for that matter; plotcat comes handy for such tasks. plotcat
-sits on the top of matplotlib and does all the initialization and drawing stuff
+of a temperature sensor that is coming from an Arduino or any other
+micro controller for that matter; plotcat comes handy for such tasks. plotcat
+sits on the top of Matplotlib and does all the initialization and drawing stuff
 itself. you just have to provide the list of values to be plotted.
 
 %package -n     python2-%{pypi_name}
-Summary:        tool to plot live serial input
+Summary:        Tool to plot live serial input
 %{?python_provide:%python_provide python2-%{pypi_name}}
  
 Requires:       python-matplotlib
 Requires:       pyserial
 %description -n python2-%{pypi_name}
-tool to plot live serial input
+Tool to plot live serial input
 
 %if 0%{?with_python3}
 %package -n     python3-%{pypi_name}
-Summary:        tool to plot live serial input
+Summary:        Tool to plot live serial input
 %{?python_provide:%python_provide python3-%{pypi_name}}
  
 Requires:       python3-matplotlib
 Requires:       python3-pyserial
 %description -n python3-%{pypi_name}
-tool to plot live serial input
+Tool to plot live serial input
 %endif
 
 %prep
