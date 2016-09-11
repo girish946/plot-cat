@@ -1,5 +1,5 @@
 # Created by pyp2rpm-3.1.3
-%global pypi_name plotcat
+%global pypi_name Plotcat
 
 %if 0%{?fedora}
 %global with_python3 1
@@ -12,7 +12,7 @@ Version:        1.0.0
 Release:        2%{?dist}
 Summary:        tool to plot live serial input
 
-License:        GPL v3
+License:        GPLv3
 URL:            https://github.com/girish946/plot-cat
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -24,7 +24,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-devel
 
 %description
-tool to plot live serial input
+tool to plot live serial input. plotcat works on python 2.7 and later. plotcat comes handy when you want to plot live data that is coming form different sensors over the serial port. For example you have to plot the output of a temperature sensor that is coming from an arduino or any other microcontroller for that matter; plotcat comes handy for such tasks. plotcat sits on the top of matplotlib and does all the initialization and drawing stuff itself. you just have to provide the list of values to be plotted.
 
 %package -n     python2-%{pypi_name}
 Summary:        tool to plot live serial input
@@ -50,6 +50,7 @@ tool to plot live serial input
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+sed -i -e '/^#!\//, 1d' *.py
 
 %build
 %py2_build
@@ -93,6 +94,6 @@ ln -sf %{_bindir}/live_plot.py-2 %{buildroot}/%{_bindir}/live_plot.py-%{python2_
 %endif
 
 %changelog
-* Sun Aug 28 2016 girish joshi <girish946@gmail.com> - 1.0.0-1
+* Sun Aug 28 2016 girish joshi <girish946@gmail.com> - 1.0.0-2
 - Initial package.
 - Builds for python2 and 3 corrected.
