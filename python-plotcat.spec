@@ -12,12 +12,12 @@ Version:        1.0.0
 Release:        2%{?dist}
 Summary:        Tool to plot live serial input
 
-License:        GPLv3
+License:        GPLv3+
 URL:            https://github.com/girish946/plot-cat
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
  
-BuildRequires:  python-setuptools
+BuildRequires:  python2-setuptools
 BuildRequires:  python2-devel
  
 BuildRequires:  python3-setuptools
@@ -56,7 +56,8 @@ Tool to plot live serial input
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-sed -i -e '/^#!\//, 1d' *.py
+sed -i -e '/^#!\//, 1d' plotcat/*.py
+
 
 %build
 %py2_build
@@ -70,23 +71,17 @@ sed -i -e '/^#!\//, 1d' *.py
 # overwritten with every setup.py install.
 %if 0%{?with_python3}
 %py3_install
-cp %{buildroot}/%{_bindir}/live_plot.py %{buildroot}/%{_bindir}/live_plot.py-3
-ln -sf %{_bindir}/live_plot.py-3 %{buildroot}/%{_bindir}/live_plot.py-%{python3_version}
 %endif
 
 %py2_install
-cp %{buildroot}/%{_bindir}/live_plot.py %{buildroot}/%{_bindir}/live_plot.py-2
-ln -sf %{_bindir}/live_plot.py-2 %{buildroot}/%{_bindir}/live_plot.py-%{python2_version}
 
 
 %files -n python2-%{pypi_name}
 %license LICENSE
 %doc 
 %{_bindir}/live_plot.py
-%{_bindir}/live_plot.py-2
-%{_bindir}/live_plot.py-%{python2_version}
-%{python2_sitelib}/%{pypi_name}
-%{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
+%{python2_sitelib}/%{pypi_name}/
+%{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info/
 
 %if 0%{?with_python3}
 
@@ -94,9 +89,8 @@ ln -sf %{_bindir}/live_plot.py-2 %{buildroot}/%{_bindir}/live_plot.py-%{python2_
 %license LICENSE
 %doc 
 %{_bindir}/live_plot.py-3
-%{_bindir}/live_plot.py-%{python3_version}
-%{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
+%{python3_sitelib}/%{pypi_name}/
+%{python3_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info/
 %endif
 
 %changelog
