@@ -5,10 +5,8 @@
 %global with_python3 1
 %endif
 
-
-
 Name:           python-%{pypi_name}
-Version:        1.0.0
+Version:        1.0.0.1
 Release:        2%{?dist}
 Summary:        Tool to plot live serial input
 
