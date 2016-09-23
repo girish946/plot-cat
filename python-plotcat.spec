@@ -1,7 +1,7 @@
 # Created by pyp2rpm-3.1.3
 %global pypi_name plotcat
 
-%if 0%{?fedora}
+%if 0%{?fedora} >= 24
 %global with_python3 1
 %endif
 
@@ -16,12 +16,7 @@ License:        GPLv3+
 URL:            https://github.com/girish946/plot-cat
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
- 
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-devel
- 
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-devel
+
 
 %description
 Tool to plot live serial input. plotcat works on python 2.7 and later.
@@ -35,6 +30,9 @@ itself. you just have to provide the list of values to be plotted.
 %package -n     python2-%{pypi_name}
 Summary:        Tool to plot live serial input
 %{?python_provide:%python_provide python2-%{pypi_name}}
+
+BuildRequires:  python-setuptools
+BuildRequires:  python2-devel
  
 Requires:       python-matplotlib
 Requires:       pyserial
@@ -45,6 +43,9 @@ Tool to plot live serial input
 %package -n     python3-%{pypi_name}
 Summary:        Tool to plot live serial input
 %{?python_provide:%python_provide python3-%{pypi_name}}
+
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-devel
  
 Requires:       python3-matplotlib
 Requires:       python3-pyserial
@@ -88,7 +89,7 @@ sed -i -e '/^#!\//, 1d' plotcat/*.py
 %files -n python3-%{pypi_name}
 %license LICENSE
 %doc 
-%{_bindir}/live_plot.py-3
+%{_bindir}/live_plot.py
 %{python3_sitelib}/%{pypi_name}/
 %{python3_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info/
 %endif
