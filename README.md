@@ -12,7 +12,7 @@ plotcat works on linux osx and windows. plotcat also works well with [Raspberry 
 
 from pip ```bash pip install plotcat```
 
-or 
+or
 
 
 ```bash
@@ -28,24 +28,24 @@ on fedora 22 and above
 
 ```bash
 
-dnf copr enable girish946/plotcat 
+dnf copr enable girish946/plotcat
 
 dnf install python-plotcat
 ```
 
 
-## useage
+## usage
 
 To plot the incomming input from serial device directly.
 
 Assuming there is one value on one line in the serial input, ie. the format of the serial input is roughly like:
 
-    val | \r | \n 
+    val | \r | \n
     -----|----|----
 
     python live_plot.py -d /dev/tty<device> -b baudrate
 
-[detailed useage of live_plot.py](https://github.com/girish946/plot-cat/wiki/live_plot.py-useage)
+[detailed usage of live_plot.py](https://github.com/girish946/plot-cat/wiki/live_plot.py-useage)
 
 
 ### plot-cat api
@@ -53,7 +53,7 @@ Assuming there is one value on one line in the serial input, ie. the format of t
 
 To use plot-cat api.
 
-```python 
+```python
 import serial
 from plotcat import *
 
