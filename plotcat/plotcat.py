@@ -12,7 +12,7 @@ class plotter:
 
     def __init__(self, number_of_samples=100, total_plots=1, rows=1,
                  cols=1, y_low_lim=0, y_high_lim=1024,
-                 names=['serial-graph']):
+                 plot_lines=[1], names=['serial-graph'], time_interval=10):
 
         """initializes the figure with the specified number of subplots
            (arg: total_plots)
@@ -22,6 +22,11 @@ class plotter:
 
         self.plots = []
         self.lines = []
+        if not len(names) == total_plots:
+            names = ['serial-graph' for i in range(total_plots)]
+
+        if not len(plot_lines) == total_plots:
+            plot_lines = [1 for i in range(total_plots)]
 
         count = 1
         for i in range(rows):
@@ -29,19 +34,21 @@ class plotter:
 
                 new_plot = self.fig.add_subplot(((rows * 100) + (cols * 10)
                                                  + count))
-                new_line = new_plot.plot(self.currentAxis,
+                for k in range(plot_lines[count-1]):
+                    new_line = new_plot.plot(self.currentAxis,
                                          [random.randint(y_low_lim,
                                                          y_high_lim)
                                           for i in
                                           range(0, number_of_samples)])
+                    self.lines.append(new_line)
+
                 pylab.title(names[count-1])
-                self.plots.append(new_plot)
-                self.lines.append(new_line)
+                self.plots.append(new_plot) 
                 if count == total_plots:
                     break
                 count += 1
         self.manager = pylab.get_current_fig_manager()
-        self.timer = self.fig.canvas.new_timer(interval=10)
+        self.timer = self.fig.canvas.new_timer(interval=time_interval)
 
     def set_call_back(self, func):
 
