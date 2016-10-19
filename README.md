@@ -10,9 +10,12 @@ plotcat works on linux osx and windows. plotcat also works well with [Raspberry 
 
 ## install plotcat
 
-from pip ```bash pip install plotcat```
+from pip 
+```bash 
+pip install plotcat
+```
 
-or
+or from github
 
 
 ```bash
