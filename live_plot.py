@@ -108,8 +108,8 @@ if __name__ == '__main__':
 
     @p.plot_self
     def setval():
-        for i in p.lines:
-            i[0].set_data(p.currentAxis, data)
+        for i in range(len(p.lines)):
+            p.lines[i][0].set_data(p.currentAxis[i], data)
 
     
     ser = serial.Serial(args.SerialDevice, args.Baudrate)

@@ -10,9 +10,9 @@ class plotter:
     """plotter initiates a matplotlib plot. This plot is used to plot the
     serial input."""
 
-    def __init__(self, number_of_samples=[100], total_plots=1, rows=1,
-                 cols=1, y_low_lim=[0], y_high_lim=[1024],
-                 plot_lines=[1], names=['serial-graph'], time_interval=10):
+    def __init__(self, number_of_samples=100, total_plots=1, rows=1,
+                 cols=1, y_low_lim=0, y_high_lim=1024,
+                 plot_lines=1, names='serial-graph', time_interval=10):
 
         """initializes the figure with the specified number of subplots
            (arg: total_plots)
@@ -22,24 +22,61 @@ class plotter:
         
         self.plots = []
         self.lines = []
-        if not len(number_of_samples) == total_plots:
-            number_of_samples = [100 for i in range(total_plots)]
+        if (type(number_of_samples) == int):
+            NOS_val = number_of_samples
+            number_of_samples = [NOS_val for i in range(total_plots)]
 
-        if not len(names) == total_plots:
-            names = ['serial-graph' for i in range(total_plots)]
+        elif type(number_of_samples) == list and not len(number_of_samples) == total_plots:
+            raise ValueError("lenght of list number_of_samples must be equal to total number of plots")
 
-        if not len(y_low_lim) == total_plots:
-            y_low_lim = [0 for i in range(total_plots)]
+        else:
+            pass
 
-        if not len(y_high_lim) == total_plots:
-            y_high_lim = [1024 for i in range(total_plots)]
+        if type(names) == str:
+            name_val = names
+            names = [name_val for i in range(total_plots)]
 
-        if not len(plot_lines) == total_plots:
-            plot_lines = [1 for i in range(total_plots)]
+        elif type(names) == list and  not len(names) == total_plots:
+            raise ValueError("lenght of list of names must be equal to total number of plots")
+
+        else:
+            pass
+
+        if (type(y_low_lim) == int):
+            y_low_lim_val = y_low_lim
+            y_low_lim = [y_low_lim_val for i in range(total_plots)]
+
+        elif type(y_low_lim) == list and not len(y_low_lim) == total_plots:
+            raise ValueError("lenght of list y_low_lim must be equal to total number of plots")
+
+        else:
+            pass
+
+        if (type(y_high_lim) == int):
+            y_high_lim_val = y_high_lim
+            y_high_lim = [y_high_lim_val for i in range(total_plots)]
+
+        elif type(y_high_lim) == list and not len(y_high_lim) == total_plots:
+            raise ValueError("lenght of list y_high_lim must be equal to total number of plots")
+
+        else:
+            pass
+
+        if (type(plot_lines) == int):
+            plot_lines_val = plot_lines
+            plot_lines = [plot_lines_val for i in range(total_plots)]
+
+        elif type(plot_lines) == list and not len(plot_lines) == total_plots:
+            raise ValueError("lenght of list y_high_lim must be equal to total number of plots")
+
+        else:
+            pass
+
 
         for i in range(total_plots):
-            self.currentAxis.append(pylab.arange(0, number_of_samples[i], 1))
+            self.currentAxis.append(range(0, number_of_samples[i]))
 
+        
         count = 1
         for i in range(rows):
             for j in range(cols):
@@ -48,12 +85,12 @@ class plotter:
                                                  + count))
                 for k in range(plot_lines[count-1]):
 
-                    #print(number_of_samples, y_low_lim, y_high_lim)
+                    samples = number_of_samples[count -1]
                     new_line = new_plot.plot(self.currentAxis[count-1],
                                          [random.randint(y_low_lim[count-1],
                                                          y_high_lim[count-1])
                                           for i in
-                                          range(0, number_of_samples[count-1])])
+                                          range(0, samples)])
                     self.lines.append(new_line)
 
                 pylab.title(names[count-1])
@@ -90,13 +127,16 @@ class plotter:
 
                 self.manager.canvas.draw()
 
-            except ValueError:
+            except ValueError as ve:
+                print(ve)
                 pass
 
             except RuntimeError as RtE:
+                print(RtE)
                 pass
 
-            except:
+            except Exception as e:
+                print(e)
                 pass
 
         return func_wrapper
