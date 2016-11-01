@@ -6,7 +6,7 @@
 %endif
 
 Name:           python-%{pypi_name}
-Version:        1.0.0.1
+Version:        1.0.2
 Release:        2%{?dist}
 Summary:        Tool to plot live serial input
 
@@ -96,3 +96,8 @@ sed -i -e '/^#!\//, 1d' plotcat/*.py
 * Sun Aug 28 2016 girish joshi <girish946@gmail.com> - 1.0.0-2
 - Initial package.
 - Builds for python2 and 3 corrected.
+
+* Tue Nov 1 2016 girish joshi <girish946@gmail.com> - 1.0.2
+- problem with multiple graphs corrected.
+- examples corrected.
+- live_plot.py updated
