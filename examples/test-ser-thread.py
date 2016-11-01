@@ -48,7 +48,7 @@ def read_from_serial():
 @p.plot_self
 def setval():
 
-    p.lines[0][0].set_data(p.currentAxis, data)
+    p.lines[0][0].set_data(p.currentAxis[0], data)
 
 if __name__ == '__main__':
 
