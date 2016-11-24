@@ -36,6 +36,14 @@ dnf copr enable girish946/plotcat
 dnf install python-plotcat
 ```
 
+for ubuntu
+
+```bash
+
+wget https://github.com/girish946/plot-cat/blob/master/dist/python-plotcat_1.0.0.1-1_all.deb
+
+sudo dpkg -i python-plotcat_1.0.0.1-1_all.deb
+```
 
 ## usage
 
