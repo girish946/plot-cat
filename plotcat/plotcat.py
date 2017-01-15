@@ -12,12 +12,12 @@ class plotter:
 
     def __init__(self, number_of_samples=100, total_plots=1, rows=1,
                  cols=1, y_low_lim=0, y_high_lim=1024,
-                 plot_lines=1, names='serial-graph', time_interval=10):
+                 plot_lines=1, names='serial-graph', time_interval=10, figure=1):
 
         """initializes the figure with the specified number of subplots
            (arg: total_plots)
         """
-        self.fig = pylab.figure(1)
+        self.fig = pylab.figure(figure)
         self.currentAxis = []
         
         self.plots = []
@@ -111,7 +111,6 @@ class plotter:
 
         self.timer.add_callback(func)
         self.timer.start()
-        pylab.show()
 
     def plot_self(self, func):
 
@@ -140,3 +139,7 @@ class plotter:
                 pass
 
         return func_wrapper
+
+    @staticmethod
+    def show():
+        pylab.show()
