@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(
     name = 'plotcat',
-    version = '1.0.1',
+    version = '1.0.2',
     author = 'girish joshi',
     author_email = 'girish946@gmail.com',
     description = ("""tool to plot live serial input"""),
@@ -15,5 +15,6 @@ setup(
     keywords = 'serial input plotting realtime data matplotlib Raspberry_pi ',
     scripts = ['live_plot.py'], 
     long_description = """tool to plot live serial input""",
+    license="GPL v3",
     
   )
