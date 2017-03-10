@@ -6,16 +6,31 @@ import random
 
 
 class plotter:
+    """plotter initiates a matplotlib plot.
 
-    """plotter initiates a matplotlib plot. This plot is used to plot the
-    serial input."""
+       This plot is used to plot the serial input. 
+
+       :param number_of_samples: number of samples to be plotted.
+       :param total_plots: total number of plots on figure.
+       :param rows: total number of rows of plots on a figure.
+       :param cols: total number of columns of plots on a figure.
+       :param y_low_lim: lower limit of y-axis.
+       :param y_high_lim: higher limit of y-axis.
+       :param plot_lines: total number of lines to be plotted on each plot.
+       :type number_of_samples: list of integers.
+       :type total_plots: integer
+       :type rows: integer
+       :type cols: intefer
+       :type y_low_lim: list of integers.
+       :type y_high_lim: list of integers.
+       :type plot_lines: list of integers
+    """
 
     def __init__(self, number_of_samples=100, total_plots=1, rows=1,
                  cols=1, y_low_lim=0, y_high_lim=1024,
                  plot_lines=1, names='serial-graph', time_interval=10, figure=1):
 
         """initializes the figure with the specified number of subplots
-           (arg: total_plots)
         """
         self.fig = pylab.figure(figure)
         self.currentAxis = []
@@ -142,4 +157,8 @@ class plotter:
 
     @staticmethod
     def show():
+        """
+        This is a static method. After instantiating plotter this method shows
+        the matplotlib figure on the screen.
+        """
         pylab.show()

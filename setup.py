@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(
     name = 'plotcat',
-    version = '1.0.2',
+    version = '1.0.4',
     author = 'girish joshi',
     author_email = 'girish946@gmail.com',
     description = ("""tool to plot live serial input"""),
