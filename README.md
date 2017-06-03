@@ -2,7 +2,9 @@
 
 ![Alt build status](https://travis-ci.org/girish946/plot-cat.svg?branch=master)
 
-plot-cat is the python library for plotting live serial input. plotcat works on python 2.7 and later. plotcat comes handy when you want to plot live data that is coming form different sensors over the serial port. For example you have to plot the output of a temperature sensor that is coming from an [arduino](https://www.arduino.cc/) or any other microcontroller for that matter; plotcat comes handy for such tasks.
+plot-cat is the python library for plotting live serial input. plotcat works on python 2.7 and later. plotcat comes handy when you want to plot live data that is coming form different sensors over the serial port, SPI, websocket, tcp socket etc.
+
+For example you have to plot the output of a temperature sensor that is coming from an [arduino](https://www.arduino.cc/) or any other microcontroller for that matter; plotcat comes handy for such tasks.
 
 plotcat sits on the top of [matplotlib](http://matplotlib.org/) and does all the initialization and drawing stuff itself. you just have to provide the list of values to be plotted.
 
@@ -71,7 +73,7 @@ from plotcat import *
 p = plotter()
 
 #init serial device
-ser = serial.Serial('/dev/ttyAMA0', 9600)
+ser = serial.Serial('/dev/ttyACM', 9600)
 
 #the callback function for plotting
 @p.plot_self
@@ -81,7 +83,9 @@ def update_plot():
   p.lines[0][0].set_data(p.currentAxis[0], data)
 
 p.set_call_back(update_plot)
-
+plotter.show()
 ```
+
+You can use plotcat for plotting live data from SPI, 
 
 this is the example to recive the data from arduino (given in the example->communication->SerialEvent of the arduino IDE.)

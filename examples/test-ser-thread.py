@@ -54,3 +54,4 @@ if __name__ == '__main__':
 
     thread.start_new_thread(read_from_serial, ())
     p.set_call_back(setval)
+    plotter.show()

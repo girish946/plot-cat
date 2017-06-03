@@ -16,3 +16,4 @@ def setval():
     p.lines[0][0].set_data(p.currentAxis[0], data)
 
 p.set_call_back(setval)
+plotter.show()
